@@ -127,7 +127,7 @@ impl AudioSource {
         }
 
         let num_channels = audio_prop.Channels;
-        let num_elements = Count * num_channels as usize;
+        let num_elements = (audio_prop.BitsPerSample as usize / 8) * Count * num_channels as usize;
 
         let Buf: Vec<T> = Vec::with_capacity(num_elements);
         let mut Buf = mem::ManuallyDrop::new(Buf);
